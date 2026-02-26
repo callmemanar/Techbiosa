@@ -2,422 +2,159 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TechBioSA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-```
-:root {
-  --white: #ffffff;
-  --off-white: #f4f6f9;
-  --border: #d0d8e4;
-  --blue: #1a3a6b;
-  --blue-light: #2d5fa8;
-  --blue-pale: #e8eef7;
-  --black: #0f0f0f;
-  --text-light: #5a6a80;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--white);
-  color: var(--black);
-  overflow-x: hidden;
-}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TechBioSA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+body { margin:0; padding:0; font-family:'DM Sans',sans-serif; background:#ffffff; color:#0a0a0a; overflow-x:hidden; }
+* { box-sizing:border-box; }
 
 /* NAV */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5vw;
-  height: 64px;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--blue);
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover { color: var(--blue); }
+nav { position:fixed; top:0; left:0; right:0; z-index:999; height:60px; background:#ffffff; border-bottom:2px solid #1a3a6b; display:flex; align-items:center; justify-content:space-between; padding:0 40px; }
+.logo { font-family:‘Playfair Display’,serif; font-size:1.3rem; color:#1a3a6b; font-weight:600; text-decoration:none; }
+.nav-links { display:flex; gap:36px; list-style:none; margin:0; padding:0; }
+.nav-links a { font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:#0a0a0a; text-decoration:none; font-weight:500; }
+.nav-links a:hover { color:#1a3a6b; }
 
 /* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 5vw;
-  padding-top: 64px;
-  background: var(--off-white);
-}
+.hero { min-height:100vh; padding:120px 40px 80px; background:#f0f4ff; display:flex; flex-direction:column; justify-content:center; }
+.icons-row { display:flex; gap:14px; margin-bottom:40px; }
+.icon-box { width:50px; height:50px; border:1.5px solid #1a3a6b; background:#ffffff; border-radius:8px; display:flex; align-items:center; justify-content:center; }
+.icon-box svg { width:24px; height:24px; stroke:#1a3a6b; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.hero h1 { font-family:‘Playfair Display’,serif; font-size:72px; font-weight:400; line-height:1.05; color:#0a0a0a; margin:0 0 20px 0; }
+.hero h1 em { font-style:italic; color:#1a3a6b; }
+.hero p { font-size:0.9rem; color:#5a6a80; letter-spacing:0.08em; margin:0; }
 
-/* ICONS ROW */
-.hero-icons {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-}
+/* SECTION */
+.section { padding:80px 40px; border-top:1px solid #d0d8e4; }
+.section:nth-child(odd) { background:#f0f4ff; }
+.section:nth-child(even) { background:#ffffff; }
+.section-tag { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:#1a3a6b; font-weight:500; margin-bottom:10px; }
+.section-title { font-family:‘Playfair Display’,serif; font-size:48px; font-weight:400; color:#0a0a0a; margin:0 0 40px 0; }
 
-.hero-icon {
-  width: 48px;
-  height: 48px;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--white);
-}
-
-.hero-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--blue);
-  fill: none;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.5rem, 8vw, 7rem);
-  font-weight: 300;
-  line-height: 1.05;
-  max-width: 14ch;
-  margin-bottom: 2rem;
-  color: var(--black);
-}
-
-.hero h1 em {
-  font-style: italic;
-  color: var(--blue);
-}
-
-.hero-sub {
-  font-size: 0.95rem;
-  color: var(--text-light);
-  letter-spacing: 0.06em;
-}
-
-/* SECTIONS */
-.section {
-  padding: 8rem 5vw;
-  border-top: 1px solid var(--border);
-}
-
-.section:nth-child(even) { background: var(--off-white); }
-
-.section-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--blue-light);
-  margin-bottom: 1rem;
-}
-
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300;
-  margin-bottom: 3rem;
-  color: var(--black);
-}
-
-/* COMING SOON BOX */
-.coming-soon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 2rem;
-  border: 1px dashed var(--border);
-  background: var(--white);
-  gap: 1rem;
-  text-align: center;
-}
-
-.coming-soon-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid var(--blue-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue-light);
-  font-size: 1.1rem;
-}
-
-.coming-soon span {
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-light);
-}
+/* COMING SOON */
+.coming-soon { border:1.5px dashed #a0b4d0; background:#ffffff; padding:80px 20px; display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; }
+.cs-circle { width:44px; height:44px; border-radius:50%; border:1.5px solid #1a3a6b; display:flex; align-items:center; justify-content:center; color:#1a3a6b; font-size:1rem; }
+.cs-text { font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:#5a6a80; }
 
 /* CONTACT */
-#contact {
-  background: var(--blue) !important;
-}
-
-#contact .section-label { color: #7a9fd4; }
-#contact .section-title { color: var(--white); }
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  max-width: 520px;
-}
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-group label {
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #a0bce0;
-}
-
-.form-group input,
-.form-group textarea {
-  background: var(--white);
-  border: 1.5px solid #a0bce0;
-  color: var(--black);
-  padding: 0.9rem 1rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  outline: none;
-  resize: none;
-  border-radius: 4px;
-  transition: border-color 0.2s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--white);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: #aaa; }
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.8rem;
-  background: var(--white);
-  color: var(--blue);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-  margin-top: 0.5rem;
-  align-self: flex-start;
-}
-
-.btn:hover { background: var(--black); color: white; }
+.contact-section { padding:80px 40px; background:#1a3a6b; border-top:none; }
+.contact-tag { font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:#7a9fd4; font-weight:500; margin-bottom:10px; }
+.contact-title { font-family:‘Playfair Display’,serif; font-size:48px; font-weight:400; color:#ffffff; margin:0 0 40px 0; }
+.form-wrap { max-width:500px; display:flex; flex-direction:column; gap:16px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.field { display:flex; flex-direction:column; gap:6px; }
+.field label { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:#a0bce0; }
+.field input, .field textarea { background:#ffffff; border:2px solid #ffffff; color:#0a0a0a; padding:12px 14px; font-family:‘DM Sans’,sans-serif; font-size:0.88rem; outline:none; border-radius:4px; resize:none; }
+.field input:focus, .field textarea:focus { border-color:#7abaff; }
+.field input::placeholder, .field textarea::placeholder { color:#aaa; }
+.send-btn { align-self:flex-start; margin-top:6px; padding:12px 28px; background:#ffffff; color:#1a3a6b; font-family:‘DM Sans’,sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border:none; border-radius:4px; cursor:pointer; }
+.send-btn:hover { background:#0a0a0a; color:#ffffff; }
 
 /* FOOTER */
-footer {
-  background: var(--black);
-  padding: 2rem 5vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+footer { background:#0a0a0a; padding:24px 40px; display:flex; justify-content:space-between; align-items:center; }
+footer .foot-logo { font-family:‘Playfair Display’,serif; font-size:1rem; color:rgba(255,255,255,0.45); }
+footer .foot-copy { font-size:0.68rem; color:rgba(255,255,255,0.2); letter-spacing:0.06em; }
 
-footer .logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: rgba(255,255,255,0.5);
+@media(max-width:600px){
+.nav-links { display:none; }
+.hero h1 { font-size:42px; }
+.section-title, .contact-title { font-size:32px; }
+.form-row { grid-template-columns:1fr; }
+nav, .hero, .section, .contact-section, footer { padding-left:20px; padding-right:20px; }
 }
+</style>
 
-footer p {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.25);
-  letter-spacing: 0.06em;
-}
-
-/* FADE IN */
-.fade-in {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 600px) {
-  .nav-links { display: none; }
-  .form-row { grid-template-columns: 1fr; }
-}
-```
-
-  </style>
 </head>
 <body>
 
-  <!-- NAV -->
+<nav>
+  <a href="#" class="logo">TechBioSA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#goodreads">Good Reads</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <nav>
-    <a href="#" class="nav-logo">TechBioSA</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#goodreads">Good Reads</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-
-  <div class="hero">
-
-```
-<!-- Simple TechBio icons -->
-<div class="hero-icons">
-  <!-- DNA -->
-  <div class="hero-icon">
-    <svg viewBox="0 0 24 24"><path d="M7 3c0 0 2 2 2 5s-2 5-2 8M17 3c0 0-2 2-2 5s2 5 2 8M7 8h10M7 16h10"/></svg>
+<div class="hero">
+  <div class="icons-row">
+    <!-- DNA -->
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><path d="M7 3c0 0 2 2 2 5s-2 5-2 8M17 3c0 0-2 2-2 5s2 5 2 8M7 8h10M7 16h10"/></svg>
+    </div>
+    <!-- Chip -->
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 7V4M12 7V4M15 7V4M9 20v-3M12 20v-3M15 20v-3M4 9h3M4 12h3M4 15h3M17 9h3M17 12h3M17 15h3"/></svg>
+    </div>
+    <!-- Molecule -->
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="12" cy="20" r="2"/><path d="M7 8l3 3M17 8l-3 3M12 14v4"/></svg>
+    </div>
+    <!-- Globe -->
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9"/></svg>
+    </div>
   </div>
-  <!-- Chip / Tech -->
-  <div class="hero-icon">
-    <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 7V4M12 7V4M15 7V4M9 20v-3M12 20v-3M15 20v-3M4 9h3M4 12h3M4 15h3M17 9h3M17 12h3M17 15h3"/></svg>
-  </div>
-  <!-- Molecule -->
-  <div class="hero-icon">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="12" cy="20" r="2"/><path d="M7 8l3 3M17 8l-3 3M12 14v4"/></svg>
-  </div>
-  <!-- Globe / SA -->
-  <div class="hero-icon">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9"/></svg>
+  <h1>The <em>convergence</em><br>is coming soon</h1>
+  <p>TechBioSA</p>
+</div>
+
+<div class="section" id="about">
+  <div class="section-tag">About</div>
+  <div class="section-title">Who we are</div>
+  <div class="coming-soon">
+    <div class="cs-circle">✦</div>
+    <div class="cs-text">Coming Soon</div>
   </div>
 </div>
 
-<h1>The <em>convergence</em><br>is coming soon</h1>
-<p class="hero-sub">TechBioSA</p>
-```
-
+<div class="section" id="events">
+  <div class="section-tag">Events</div>
+  <div class="section-title">What's happening</div>
+  <div class="coming-soon">
+    <div class="cs-circle">✦</div>
+    <div class="cs-text">Coming Soon</div>
   </div>
+</div>
 
-  <!-- ABOUT -->
+<div class="section" id="goodreads">
+  <div class="section-tag">Good Reads</div>
+  <div class="section-title">Ideas worth exploring</div>
+  <div class="coming-soon">
+    <div class="cs-circle">✦</div>
+    <div class="cs-text">Coming Soon</div>
+  </div>
+</div>
 
-  <section class="section fade-in" id="about">
-    <p class="section-label">About</p>
-    <h2 class="section-title">Who we are</h2>
-    <div class="coming-soon">
-      <div class="coming-soon-icon">✦</div>
-      <span>Coming Soon</span>
-    </div>
-  </section>
-
-  <!-- EVENTS -->
-
-  <section class="section fade-in" id="events">
-    <p class="section-label">Events</p>
-    <h2 class="section-title">What's happening</h2>
-    <div class="coming-soon">
-      <div class="coming-soon-icon">✦</div>
-      <span>Coming Soon</span>
-    </div>
-  </section>
-
-  <!-- GOOD READS -->
-
-  <section class="section fade-in" id="goodreads">
-    <p class="section-label">Good Reads</p>
-    <h2 class="section-title">Ideas worth exploring</h2>
-    <div class="coming-soon">
-      <div class="coming-soon-icon">✦</div>
-      <span>Coming Soon</span>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-
-  <section class="section fade-in" id="contact">
-    <p class="section-label">Contact</p>
-    <h2 class="section-title">Drop us a line</h2>
-    <form class="contact-form" action="https://formspree.io/f/xwvnyqod" method="POST">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name" placeholder="Your name"/>
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="your@email.com"/>
-        </div>
+<div class="contact-section" id="contact">
+  <div class="contact-tag">Contact</div>
+  <div class="contact-title">Drop us a line</div>
+  <form class="form-wrap" action="https://formspree.io/f/xwvnyqod" method="POST">
+    <div class="form-row">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Your name"/>
       </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea rows="5" name="message" placeholder="Say hello..."></textarea>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="your@email.com"/>
       </div>
-      <button class="btn" type="submit">Send →</button>
-    </form>
-  </section>
+    </div>
+    <div class="field">
+      <label>Message</label>
+      <textarea rows="5" name="message" placeholder="Say hello..."></textarea>
+    </div>
+    <button class="send-btn" type="submit">Send →</button>
+  </form>
+</div>
 
-  <!-- FOOTER -->
-
-  <footer>
-    <span class="logo">TechBioSA</span>
-    <p>© 2026 TechBioSA — All Rights Reserved</p>
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+<footer>
+  <span class="foot-logo">TechBioSA</span>
+  <span class="foot-copy">© 2026 TechBioSA — All Rights Reserved</span>
+</footer>
 
 </body>
 </html>
