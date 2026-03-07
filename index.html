@@ -109,16 +109,7 @@ transition:opacity .5s;
 /* ════ P1: HERO ════ */
 #p1{flex-direction:column;align-items:flex-start;justify-content:center;}
 
-.page-title-bg{
-position:absolute;
-font-family:‘Cormorant Garamond’,serif;
-font-size:clamp(100px,20vw,280px);
-font-weight:300;font-style:italic;
-color:rgba(255,255,255,.03);
-right:-2vw;top:50%;transform:translateY(-50%);
-pointer-events:none;user-select:none;line-height:1;
-letter-spacing:-.02em;
-}
+.page-title-bg{ display:none; }
 
 .hero-h{
 font-family:‘Cormorant Garamond’,serif;
@@ -211,9 +202,35 @@ color:#ffffff;line-height:1.3;margin-bottom:10px;
 .p3-summary p{margin-bottom:7px;font-size:.67rem;font-weight:200;line-height:1.8;color:rgba(255,255,255,0.55);}
 .p3-summary p:last-child{margin-bottom:0;}
 
-/* access form */
+/* access form - collapsible */
 .access-form{width:100%;}
-.af-label{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:#4ecb8d;margin-bottom:14px;display:block;}
+.af-trigger{
+display:flex;align-items:center;gap:14px;
+cursor:pointer;margin-bottom:0;
+padding:14px 0;
+border-bottom:2px solid #4ecb8d;
+transition:opacity .2s;
+user-select:none;
+}
+.af-trigger:hover{opacity:.8;}
+.af-trigger-label{
+font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+color:#4ecb8d;font-weight:500;font-family:‘DM Sans’,sans-serif;
+}
+.af-trigger-arrow{
+margin-left:auto;font-size:.75rem;color:#4ecb8d;
+transition:transform .3s;display:inline-block;
+}
+.af-trigger.open .af-trigger-arrow{transform:rotate(180deg);}
+
+.af-body{
+max-height:0;overflow:hidden;
+transition:max-height .4s cubic-bezier(.77,0,.18,1), opacity .3s;
+opacity:0;
+}
+.af-body.open{max-height:600px;opacity:1;}
+
+.af-label{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:#4ecb8d;margin:14px 0 10px;display:block;}
 .af-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.15);margin-bottom:1px;}
 .af-single{background:rgba(255,255,255,0.15);}
 .af-f{background:#1e5590;padding:10px 13px;display:flex;flex-direction:column;gap:4px;transition:background .2s;}
@@ -401,18 +418,23 @@ color:#ffffff;margin-bottom:14px;
 
   <div class="p3-right-col">
     <div class="access-form">
-      <span class="af-label">Request full access</span>
-      <form id="regForm" action="https://hook.us2.make.com/e6ve2wb71t0fnfuwbjg6qte8nnhrnma1" method="POST">
-        <div class="af-grid">
-          <div class="af-f"><label>Name</label><input type="text" name="name" placeholder="Your name" required/></div>
-          <div class="af-f"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
-          <div class="af-f"><label>Role</label><input type="text" name="role" placeholder="Researcher, Student..." required/></div>
-          <div class="af-f"><label>Interest</label><input type="text" name="interest" placeholder="AI, Genomics..." required/></div>
-        </div>
-        <div class="af-single"><div class="af-f"><label>Why do you want to join?</label><textarea name="why" rows="2" placeholder="Tell us briefly..." required></textarea></div></div>
-        <button type="submit" class="af-btn">Send Request</button>
-      </form>
-      <div class="af-ok" id="af-ok">Thank you — we'll be in touch soon.</div>
+      <div class="af-trigger" id="af-trigger" onclick="toggleForm()">
+        <span class="af-trigger-label">Request Full Access</span>
+        <span class="af-trigger-arrow">↓</span>
+      </div>
+      <div class="af-body" id="af-body">
+        <form id="regForm" action="https://hook.us2.make.com/e6ve2wb71t0fnfuwbjg6qte8nnhrnma1" method="POST">
+          <div class="af-grid">
+            <div class="af-f"><label>Name</label><input type="text" name="name" placeholder="Your name" required/></div>
+            <div class="af-f"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
+            <div class="af-f"><label>Role</label><input type="text" name="role" placeholder="Researcher, Student..." required/></div>
+            <div class="af-f"><label>Interest</label><input type="text" name="interest" placeholder="AI, Genomics..." required/></div>
+          </div>
+          <div class="af-single"><div class="af-f"><label>Why do you want to join?</label><textarea name="why" rows="2" placeholder="Tell us briefly..." required></textarea></div></div>
+          <button type="submit" class="af-btn">Send Request</button>
+        </form>
+        <div class="af-ok" id="af-ok">Thank you — we'll be in touch soon.</div>
+      </div>
     </div>
   </div>
 
@@ -548,6 +570,14 @@ document.addEventListener('touchend',e=>{
   const d=ts-e.changedTouches[0].clientY;
   if(Math.abs(d)>55)goTo(cur+(d>0?1:-1));
 });
+
+/* toggle access form */
+function toggleForm(){
+  const trigger=document.getElementById('af-trigger');
+  const body=document.getElementById('af-body');
+  trigger.classList.toggle('open');
+  body.classList.toggle('open');
+}
 
 /* reg form */
 document.getElementById('regForm').addEventListener('submit',async function(e){
