@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" style="background:#1a4b7c;background-color:#1a4b7c;">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -24,8 +24,9 @@
 
 html,body{
 width:100%;height:100%;
-background:var(–blue);
-color:var(–white);
+background:#1a4b7c !important;
+background-color:#1a4b7c !important;
+color:#ffffff !important;
 font-family:‘DM Sans’,sans-serif;
 overflow:hidden;cursor:none;
 }
@@ -94,7 +95,6 @@ display:flex;align-items:center;gap:10px;
 .menu-item .mi-num{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:.7rem;color:var(–green);min-width:16px;}
 
 /* ── COUNTER ── */
-#counter{position:fixed;bottom:28px;right:36px;z-index:200;font-size:.52rem;letter-spacing:.2em;color:var(–dim);}
 
 /* ── PAGES ── */
 .pg{
@@ -261,7 +261,7 @@ color:var(–white);margin-bottom:14px;
 </style>
 
 </head>
-<body>
+<body style="background:#1a4b7c;background-color:#1a4b7c;color:#ffffff;">
 
 <div id="dot"></div>
 <div id="ring"></div>
@@ -289,8 +289,6 @@ color:var(–white);margin-bottom:14px;
   <div class="menu-item" data-page="3" onclick="menuGo(3)"><span class="mi-num">04</span>Highlight</div>
   <div class="menu-item" data-page="4" onclick="menuGo(4)"><span class="mi-num">05</span>Contact</div>
 </div>
-
-<div id="counter">01 / 05</div>
 
 <!-- ══ P1: HERO ══ -->
 
@@ -442,7 +440,6 @@ document.addEventListener('mousemove',e=>{
 const pages=Array.from(document.querySelectorAll('.pg'));
 const N=pages.length;
 let cur=0,busy=false;
-const counter=document.getElementById('counter');
 
 const PAGE_NAMES=['Home','About','Insight','Highlight','Contact'];
 
@@ -462,7 +459,7 @@ function goTo(n){
     pages[cur].classList.remove('on');
     cur=n;
     pages[cur].classList.add('on');
-    counter.textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+
     document.querySelectorAll('.menu-item').forEach((m,i)=>m.classList.toggle('active',i===cur));
     bars.forEach((b,i)=>{
       b.style.transition=`transform .22s cubic-bezier(.77,0,.18,1) ${i*.04}s`;
