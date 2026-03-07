@@ -173,23 +173,46 @@ font-family:‘Cormorant Garamond’,serif;font-size:1.1rem;font-style:italic;co
 .tc-role{font-size:.56rem;font-weight:200;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
 
 /* ════ P3: INSIGHT ════ */
-#p3{flex-direction:column;justify-content:center;gap:0;padding-top:100px;}
+#p3{flex-direction:row;align-items:stretch;justify-content:flex-start;padding-top:80px;gap:0;}
 
-.p3-subtitle{
+.p3-left-col{
+flex:0 0 48%;
+display:flex;flex-direction:column;justify-content:center;
+padding-right:48px;
+border-right:1px solid rgba(255,255,255,0.1);
+}
+.p3-right-col{
+flex:1;
+display:flex;flex-direction:column;justify-content:center;
+padding-left:48px;
+}
+
+.p3-wp{
+border-left:2px solid #4ecb8d;
+padding-left:16px;
+margin-bottom:24px;
+}
+.p3-wp-faded{
+border-left:2px solid rgba(255,255,255,0.12);
+padding-left:16px;
+opacity:0.45;
+}
+.p3-wp-num{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:#4ecb8d;margin-bottom:6px;}
+.p3-wp-faded .p3-wp-num{color:rgba(255,255,255,0.3);}
+.p3-wp-title{
 font-family:‘Cormorant Garamond’,serif;
-font-size:clamp(18px,2vw,26px);
-font-style:italic;font-weight:300;
-color:#4ecb8d;margin-bottom:18px;letter-spacing:.02em;
+font-size:clamp(15px,1.5vw,20px);font-weight:300;font-style:italic;
+color:#ffffff;line-height:1.3;margin-bottom:10px;
 }
-.p3-summary{
-font-size:.74rem;font-weight:200;line-height:1.9;
-color:rgba(255,255,255,0.55);max-width:640px;margin-bottom:36px;
-}
-.p3-summary p{margin-bottom:8px;}
+.p3-wp-faded .p3-wp-title{color:rgba(255,255,255,0.3);}
+.p3-wp-body{font-size:.67rem;font-weight:200;line-height:1.8;color:rgba(255,255,255,0.55);}
+.p3-wp-faded .p3-wp-body{color:rgba(255,255,255,0.2);}
+
+.p3-summary p{margin-bottom:7px;font-size:.67rem;font-weight:200;line-height:1.8;color:rgba(255,255,255,0.55);}
 .p3-summary p:last-child{margin-bottom:0;}
 
 /* access form */
-.access-form{max-width:560px;width:100%;}
+.access-form{width:100%;}
 .af-label{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:#4ecb8d;margin-bottom:14px;display:block;}
 .af-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.15);margin-bottom:1px;}
 .af-single{background:rgba(255,255,255,0.15);}
@@ -255,8 +278,11 @@ color:#ffffff;margin-bottom:14px;
 .pg{padding:70px 6vw;}
 .about-two{grid-template-columns:1fr;}
 .team-row{grid-template-columns:1fr 1fr;}
-.p3-layout,.c-grid,.af-grid{grid-template-columns:1fr;}
+.c-grid,.af-grid{grid-template-columns:1fr;}
 .page-title-bg{display:none;}
+#p3{flex-direction:column;}
+.p3-left-col{padding-right:0;padding-bottom:32px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
+.p3-right-col{padding-left:0;padding-top:24px;}
 }
 </style>
 
@@ -342,55 +368,54 @@ color:#ffffff;margin-bottom:14px;
 <!-- ══ P3: INSIGHT ══ -->
 
 <div class="pg" id="p3">
-  <div class="page-title-bg">Insight</div>
-  <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+
+  <!-- LEFT: title + papers -->
+
+  <div class="p3-left-col">
+    <h2 class="page-big-title" style="margin-bottom:32px;">Insight</h2>
 
 ```
-<!-- LEFT: papers list -->
-<div>
-  <h2 class="page-big-title" style="margin-bottom:24px;">Insight</h2>
+<!-- WP 01 -->
+<div class="p3-wp">
+  <p class="p3-wp-num">Whitepaper No. 01</p>
+  <p class="p3-wp-title">Saudi Arabia's Readiness for TechBio</p>
+  <div class="p3-summary">
+    <p>This paper examines how AI and automation are reshaping drug discovery — and what that means for Saudi Arabia.</p>
+    <p>We benchmark the traditional pharma pipeline against TechBio across every stage, from target identification to clinical development.</p>
+    <p>The analysis maps KSA's current infrastructure, talent, and data capabilities against global TechBio leaders.</p>
+    <p>The goal: a clear picture of the gap — and what it takes to close it.</p>
+  </div>
+</div>
 
-  <!-- WP 01 -->
-  <div style="border-left:2px solid #4ecb8d;padding-left:18px;margin-bottom:28px;">
-    <p style="font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:#4ecb8d;margin-bottom:8px;">Whitepaper No. 01</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,22px);font-weight:300;font-style:italic;color:#ffffff;line-height:1.3;margin-bottom:14px;">Saudi Arabia's Readiness for TechBio</p>
-    <div class="p3-summary">
-      <p>This paper examines how Artificial Intelligence and automation are reshaping drug discovery — and what that means for Saudi Arabia.</p>
-      <p>We benchmark the traditional pharma pipeline against the emerging TechBio model across every stage, from target identification to clinical development.</p>
-      <p>The analysis maps KSA's current infrastructure, talent, and data capabilities against what global TechBio leaders have built.</p>
-      <p>The goal: a clear picture of the gap — and what it takes to close it.</p>
+<!-- WP 02 coming soon -->
+<div class="p3-wp-faded">
+  <p class="p3-wp-num">Whitepaper No. 02</p>
+  <p class="p3-wp-title">Coming Soon</p>
+  <p class="p3-wp-body">The next paper is in progress. Stay tuned.</p>
+</div>
+```
+
+  </div>
+
+  <!-- RIGHT: form -->
+
+  <div class="p3-right-col">
+    <div class="access-form">
+      <span class="af-label">Request full access</span>
+      <form id="regForm" action="https://hook.us2.make.com/e6ve2wb71t0fnfuwbjg6qte8nnhrnma1" method="POST">
+        <div class="af-grid">
+          <div class="af-f"><label>Name</label><input type="text" name="name" placeholder="Your name" required/></div>
+          <div class="af-f"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="af-f"><label>Role</label><input type="text" name="role" placeholder="Researcher, Student..." required/></div>
+          <div class="af-f"><label>Interest</label><input type="text" name="interest" placeholder="AI, Genomics..." required/></div>
+        </div>
+        <div class="af-single"><div class="af-f"><label>Why do you want to join?</label><textarea name="why" rows="2" placeholder="Tell us briefly..." required></textarea></div></div>
+        <button type="submit" class="af-btn">Send Request</button>
+      </form>
+      <div class="af-ok" id="af-ok">Thank you — we'll be in touch soon.</div>
     </div>
   </div>
 
-  <!-- WP 02 coming soon -->
-  <div style="border-left:2px solid rgba(255,255,255,0.12);padding-left:18px;opacity:0.5;">
-    <p style="font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;">Whitepaper No. 02</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,22px);font-weight:300;font-style:italic;color:rgba(255,255,255,0.35);line-height:1.3;margin-bottom:10px;">Coming Soon</p>
-    <p style="font-size:.62rem;font-weight:200;color:rgba(255,255,255,0.25);">The next paper is in progress. Stay tuned.</p>
-  </div>
-
-</div>
-
-<!-- RIGHT: form -->
-<div style="padding-top:8px;">
-  <div class="access-form" style="max-width:100%;">
-    <span class="af-label">Request full access</span>
-    <form id="regForm" action="https://hook.us2.make.com/e6ve2wb71t0fnfuwbjg6qte8nnhrnma1" method="POST">
-      <div class="af-grid">
-        <div class="af-f"><label>Name</label><input type="text" name="name" placeholder="Your name" required/></div>
-        <div class="af-f"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
-        <div class="af-f"><label>Role</label><input type="text" name="role" placeholder="Researcher, Student..." required/></div>
-        <div class="af-f"><label>Interest</label><input type="text" name="interest" placeholder="AI, Genomics..." required/></div>
-      </div>
-      <div class="af-single"><div class="af-f"><label>Why do you want to join?</label><textarea name="why" rows="2" placeholder="Tell us briefly..." required></textarea></div></div>
-      <button type="submit" class="af-btn">Send Request</button>
-    </form>
-    <div class="af-ok" id="af-ok">Thank you — we'll be in touch soon.</div>
-  </div>
-</div>
-```
-
-  </div>
 </div>
 
 <!-- ══ P4: HIGHLIGHT ══ -->
