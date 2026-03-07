@@ -582,10 +582,24 @@ function toggleForm(){
 /* reg form */
 document.getElementById('regForm').addEventListener('submit',async function(e){
   e.preventDefault();
-  const btn=this.querySelector('.af-btn');btn.textContent='Sending...';
+  const btn=this.querySelector('.af-btn');
+  btn.textContent='Sending...';
+  const data={
+    name: this.name.value,
+    email: this.email.value,
+    role: this.role.value,
+    interest: this.interest.value,
+    why: this.why.value
+  };
   try{
-    await fetch(this.action,{method:'POST',body:new FormData(this),mode:'no-cors'});
+    await fetch(this.action,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data),
+      mode:'no-cors'
+    });
     this.style.display='none';
+    document.getElementById('af-trigger').style.display='none';
     document.getElementById('af-ok').style.display='block';
   }catch(err){btn.textContent='Send Request';}
 });
