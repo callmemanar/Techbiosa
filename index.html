@@ -584,25 +584,22 @@ document.getElementById('regForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const btn=this.querySelector('.af-btn');
   btn.textContent='Sending...';
-  const data={
+  const params=new URLSearchParams({
     name: this.elements['name'].value,
     email: this.elements['email'].value,
     role: this.elements['role'].value,
     interest: this.elements['interest'].value,
     why: this.elements['why'].value
-  };
+  });
   try{
-    await fetch(this.action,{
+    await fetch(this.action+'?'+params.toString(),{
       method:'POST',
-      headers:{'Content-Type':'text/plain'},
-      body:JSON.stringify(data),
       mode:'no-cors'
     });
     this.style.display='none';
     document.getElementById('af-trigger').style.display='none';
     document.getElementById('af-ok').style.display='block';
   }catch(err){
-    console.error(err);
     btn.textContent='Send Request';
   }
 });
